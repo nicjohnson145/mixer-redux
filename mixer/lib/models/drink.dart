@@ -23,4 +23,26 @@ class Drink {
         this.ingredients = other.ingredients;
         this.instructions = other.instructions;
     }
+
+    Map<String, Object> toJson() {
+        return {
+            'id': this.id,
+            'name': this.name,
+            'primary_alcohol': this.primary_alcohol,
+            'preferred_glass': this.preferred_glass,
+            'ingredients': this.ingredients,
+            'instructions': this.instructions,
+        };
+    }
+
+    static Drink fromJson(Map<String, Object> json) {
+        return Drink(
+            json['id'] as int,
+            json['name'] as String,
+            json['primary_alcohol'] as String,
+            json['preferred_glass'] as String,
+            json['ingredients'] as List<String>,
+            json['instructions'] as String,
+        );
+    }
 }
