@@ -45,4 +45,9 @@ class Drink {
             json['instructions'] as String,
         );
     }
+
+    @override
+    String toString() {
+        return 'Drink(id: $id, name: $name)';
+    }
 }

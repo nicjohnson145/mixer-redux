@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:redux/redux.dart';
+import 'package:redux_logging/redux_logging.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 import 'package:mixer/actions/loading_actions.dart';
@@ -19,6 +20,7 @@ class Mixer extends StatelessWidget {
         initialState: AppState(),
         middleware: []
             ..addAll(createStoreDrinksMiddleware())
+            ..add(LoggingMiddleware.printer())
         ,
     );
 

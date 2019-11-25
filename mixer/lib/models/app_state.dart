@@ -20,4 +20,9 @@ class AppState {
             drinks: drinks ?? this.drinks,
         );
     }
+
+    @override
+    String toString() {
+        return 'AppState(isLoading: $isLoading, drinks: $drinks)';
+    }
 }
