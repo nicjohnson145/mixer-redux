@@ -10,8 +10,8 @@ import 'package:mixer/models/models.dart';
 
 
 List<Middleware<AppState>> createStoreDrinksMiddleware([
-    DrinkRepository repository = DrinkRepository(
-        fileStorage: FileStorage(
+    DrinkRepository repository = const DrinkRepository(
+        fileStorage: const FileStorage(
             'mixer_data_store',
             getApplicationDocumentsDirectory,
         ),
@@ -43,7 +43,8 @@ Middleware<AppState> _createLoadDrinks(DrinkRepository repository) {
                 store.dispatch(DrinksLoadedAction(drinks));
             }
         ).catchError(
-            (_) {
+            (err) {
+                print(err);
                 store.dispatch(DrinksNotLoadedAction);
             }
         );

@@ -17,9 +17,9 @@ class Mixer extends StatelessWidget {
     final store = Store<AppState>(
         appReducer,
         initialState: AppState(),
-        middleware: [
-
-        ],
+        middleware: []
+            ..addAll(createStoreDrinksMiddleware())
+        ,
     );
 
     @override
@@ -31,11 +31,7 @@ class Mixer extends StatelessWidget {
                 theme: ThemeData(brightness: Brightness.dark),
                 routes: {
                     AppRoute.Home: (context) {
-                        return HomeScreen(
-                            onInit: () {
-                                StoreProvider.of<AppState>(context).dispatch(LoadDrinksAction());
-                            },
-                        );
+                        return HomeScreen(onInit: this.loadDrinks(context));
                     },
                     AppRoute.AddDrink: (context) {
                         return AddDrink();
@@ -43,6 +39,12 @@ class Mixer extends StatelessWidget {
                 },
             ),
         );
+    }
+
+    void Function() loadDrinks(BuildContext context) {
+        return () {
+            StoreProvider.of<AppState>(context).dispatch(LoadDrinksAction());
+        };
     }
 }
 

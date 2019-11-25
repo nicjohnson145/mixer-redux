@@ -9,11 +9,12 @@ import 'package:mixer/models/models.dart';
 class DrinkRepository {
     final FileStorage fileStorage;
 
-    DrinkRepository({
+    const DrinkRepository({
         @required this.fileStorage,
     });
 
     Future<List<Drink>> loadDrinks() async {
+        print('Loading drinks');
         return await this.fileStorage.loadDrinks();
     }
 
