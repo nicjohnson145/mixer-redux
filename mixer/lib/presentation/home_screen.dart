@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 
 import 'package:mixer/containers/sorted_drinks.dart';
 import 'package:mixer/util/routes.dart';
@@ -8,6 +9,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 import 'package:mixer/models/models.dart';
 import 'package:mixer/actions/drink_actions.dart';
+import 'package:mixer/actions/loading_actions.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -31,17 +33,30 @@ class HomeScreenState extends State<HomeScreen> {
         super.initState();
     }
 
+    List<Widget> getActions() {
+        if (kReleaseMode) {
+            return [];
+        }
+        else {
+            return [
+                IconButton(
+                    icon: Icon(Icons.add_circle),
+                    onPressed: () => this.prepData(context),
+                ),
+                IconButton(
+                    icon: Icon(Icons.backspace),
+                    onPressed: () => this.clearDrinks(context),
+                ),
+            ];
+        }
+    }
+
     @override
     Widget build(BuildContext context) {
         return Scaffold(
             appBar: AppBar(
                 title: Text('Mixer'),
-                actions: [
-                    IconButton(
-                        icon: Icon(Icons.add_circle),
-                        onPressed: () => this.prepData(context),
-                    ),
-                ],
+                actions: this.getActions(),
             ),
             body: Container(
                 child: SortedDrinks(),
@@ -74,8 +89,26 @@ class HomeScreenState extends State<HomeScreen> {
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
                 ),
         ];
+        List<String> longIngs = [];
+        for (int i = 0; i < 20; i++) {
+            longIngs.add('Ingredient ${i}');
+        }
+        drinks.add(
+            Drink(
+                4,
+                'Stress Drink',
+                'Bourbon',
+                'Rocks',
+                longIngs,
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+            )
+        );
         for (int i = 0; i < drinks.length; i++) {
             StoreProvider.of<AppState>(context).dispatch(AddDrinkAction(drinks[i]));
         }
+    }
+
+    void clearDrinks(BuildContext context) {
+        StoreProvider.of<AppState>(context).dispatch(DrinksNotLoadedAction());
     }
 }

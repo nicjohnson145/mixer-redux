@@ -12,7 +12,7 @@ final drinksReducer = combineReducers<List<Drink>>([
 ]);
 
 List<Drink> _addDrink(List<Drink> drinks, AddDrinkAction action) {
-    return List.from(drinks)..add(action.drink);
+    return drinks.toList()..add(action.drink);
 }
 
 List<Drink> _updateDrink(List<Drink> drinks, UpdateDrinkAction action) {
@@ -20,7 +20,7 @@ List<Drink> _updateDrink(List<Drink> drinks, UpdateDrinkAction action) {
 }
 
 List<Drink> _deleteDrink(List<Drink> drinks, DeleteDrinkAction action) {
-
+    return drinks.where((drink) => drink.id != action.id).toList();
 }
 
 List<Drink> _setDrinks(List<Drink> drinks, DrinksLoadedAction action) {

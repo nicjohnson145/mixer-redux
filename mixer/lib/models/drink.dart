@@ -35,13 +35,13 @@ class Drink {
         };
     }
 
-    static Drink fromJson(Map<String, Object> json) {
+    static Drink fromJson(Map<String, dynamic> json) {
         return Drink(
             json['id'] as int,
             json['name'] as String,
             json['primary_alcohol'] as String,
             json['preferred_glass'] as String,
-            json['ingredients'] as List<String>,
+            List.from(json['ingredients']),
             json['instructions'] as String,
         );
     }
