@@ -1,3 +1,5 @@
+import 'package:collection/collection.dart';
+
 class Drink {
     int id;
     String name;
@@ -49,5 +51,16 @@ class Drink {
     @override
     String toString() {
         return 'Drink(id: $id, name: $name)';
+    }
+
+    bool operator ==(Drink other) {
+        return (
+            this.id == other.id
+            && this.name == other.name
+            && this.primary_alcohol == other.primary_alcohol
+            && this.preferred_glass == other.preferred_glass
+            && IterableEquality().equals(this.ingredients, other.ingredients)
+            && this.instructions == other.instructions
+        );
     }
 }

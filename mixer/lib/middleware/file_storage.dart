@@ -22,7 +22,8 @@ class FileStorage {
 
     Future<File> saveDrinks(List<Drink> drinks) async {
         final file = await this._getLocalFile();
-        return file.writeAsString(JsonEncoder().convert({
+        JsonEncoder encoder = JsonEncoder.withIndent('  ');
+        return file.writeAsString(encoder.convert({
             'drinks': drinks.map((drink) => drink.toJson()).toList(),
         }));
     }
