@@ -50,7 +50,7 @@ class DrinkItem extends StatelessWidget {
         Navigator.of(context).push(MaterialPageRoute(
             builder: (_) {
                 return DrinkDetails(
-                    id: drink.id,
+                    uuid: drink.uuid,
                 );
             },
         ));

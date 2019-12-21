@@ -26,7 +26,7 @@ class AddDrink extends StatelessWidget {
     }
 
     OnSaveCallback addDrink(Store<AppState> store) {
-        return (int id, Drink drink) {
+        return (String uuid, Drink drink) {
             store.dispatch(AddDrinkAction(drink));
         };
     }

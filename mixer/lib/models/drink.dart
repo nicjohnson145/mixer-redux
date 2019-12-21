@@ -1,24 +1,21 @@
 import 'package:collection/collection.dart';
 
 class Drink {
-    int id;
-    String name;
+    String uuid; String name;
     String primary_alcohol;
     String preferred_glass;
     List<String> ingredients;
     String instructions;
 
     Drink(
-        this.id,
+        this.uuid,
         this.name,
-        this.primary_alcohol,
-        this.preferred_glass,
-        this.ingredients,
+        this.primary_alcohol, this.preferred_glass, this.ingredients,
         this.instructions,
     );
 
     void from(Drink other) {
-        this.id = other.id;
+        this.uuid = other.uuid;
         this.name = other.name;
         this.primary_alcohol = other.primary_alcohol;
         this.preferred_glass = other.preferred_glass;
@@ -28,7 +25,7 @@ class Drink {
 
     Map<String, Object> toJson() {
         return {
-            'id': this.id,
+            'uuid': this.uuid,
             'name': this.name,
             'primary_alcohol': this.primary_alcohol,
             'preferred_glass': this.preferred_glass,
@@ -39,7 +36,7 @@ class Drink {
 
     static Drink fromJson(Map<String, dynamic> json) {
         return Drink(
-            json['id'] as int,
+            json['uuid'] as String,
             json['name'] as String,
             json['primary_alcohol'] as String,
             json['preferred_glass'] as String,
@@ -50,12 +47,12 @@ class Drink {
 
     @override
     String toString() {
-        return 'Drink(id: $id, name: $name)';
+        return 'Drink(uuid: $uuid, name: $name)';
     }
 
     bool operator ==(Drink other) {
         return (
-            this.id == other.id
+            this.uuid == other.uuid
             && this.name == other.name
             && this.primary_alcohol == other.primary_alcohol
             && this.preferred_glass == other.preferred_glass

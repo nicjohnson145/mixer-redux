@@ -9,15 +9,15 @@ import 'package:mixer/util/keys.dart';
 import 'package:mixer/selectors/selectors.dart';
 
 class EditDrink extends StatelessWidget {
-    final int id;
+    final String uuid;
 
-    EditDrink({Key key, @required this.id}) : super(key: key);
+    EditDrink({Key key, @required this.uuid}) : super(key: key);
 
     @override
     Widget build(BuildContext context) {
         return StoreConnector<AppState, _ViewModel>(
             converter: (Store<AppState> store) {
-                return _ViewModel.from(store, this.id);
+                return _ViewModel.from(store, this.uuid);
             },
             builder: (BuildContext contet, _ViewModel vm) {
                 return AddEditScreen(
@@ -40,11 +40,11 @@ class _ViewModel {
         @required this.onSave,
     });
 
-    factory _ViewModel.from(Store<AppState> store, int id) {
+    factory _ViewModel.from(Store<AppState> store, String uuid) {
         return _ViewModel(
-            drink: drinkSelector(store.state, id),
-            onSave: (int id, Drink drink) {
-                store.dispatch(UpdateDrinkAction(id: id, updatedDrink: drink));
+            drink: drinkSelector(store.state, uuid),
+            onSave: (String uuid, Drink drink) {
+                store.dispatch(UpdateDrinkAction(uuid: uuid, updatedDrink: drink));
             }
         );
     }

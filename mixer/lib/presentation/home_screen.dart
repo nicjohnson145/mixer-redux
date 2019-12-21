@@ -73,7 +73,7 @@ class HomeScreenState extends State<HomeScreen> {
     void prepData(BuildContext context) {
         List<Drink> drinks = [
                 Drink(
-                    1,
+                    '64bf0365-a9aa-4311-8862-cc8415a6dddb',
                     'Daquari',
                     'Rum',
                     'Coupe',
@@ -81,7 +81,7 @@ class HomeScreenState extends State<HomeScreen> {
                     null,
                 ),
                 Drink(
-                    2,
+                    '129591d5-40da-453f-b6fa-6ebecc24d214',
                     'Blueberry Cilantro Margarita',
                     'Tequila',
                     'Rocks',
@@ -95,7 +95,7 @@ class HomeScreenState extends State<HomeScreen> {
         }
         drinks.add(
             Drink(
-                4,
+                'a8affc71-b62d-4de2-833f-ae42da6ad0dc',
                 'Stress Drink',
                 'Bourbon',
                 'Rocks',

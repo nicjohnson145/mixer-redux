@@ -17,12 +17,12 @@ List<Drink> _addDrink(List<Drink> drinks, AddDrinkAction action) {
 
 List<Drink> _updateDrink(List<Drink> drinks, UpdateDrinkAction action) {
     return drinks
-        .map((drink) => drink.id == action.id ? action.updatedDrink : drink)
+        .map((drink) => drink.uuid == action.uuid ? action.updatedDrink : drink)
         .toList();
 }
 
 List<Drink> _deleteDrink(List<Drink> drinks, DeleteDrinkAction action) {
-    return drinks.where((drink) => drink.id != action.id).toList();
+    return drinks.where((drink) => drink.uuid != action.uuid).toList();
 }
 
 List<Drink> _setDrinks(List<Drink> drinks, DrinksLoadedAction action) {

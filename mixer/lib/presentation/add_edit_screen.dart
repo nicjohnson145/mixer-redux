@@ -1,10 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'package:uuid/uuid.dart';
+
 import 'package:mixer/models/drink.dart';
 import 'package:mixer/util/keys.dart';
 
-typedef OnSaveCallback = Function(int id, Drink drink);
+typedef OnSaveCallback = Function(String uuid, Drink drink);
 
 class AddEditScreen extends StatefulWidget {
     final bool isEditing;
@@ -33,7 +35,7 @@ class AddEditScreenState extends State<AddEditScreen> {
     FocusNode ingredientsFocus = FocusNode();
 
     List<String> _ingredients = [];
-    int id;
+    String uuid;
 
     @override
     void initState() {
@@ -44,7 +46,7 @@ class AddEditScreenState extends State<AddEditScreen> {
             preferredGlassController.text = widget.drink.preferred_glass;
             instructionsController.text = widget.drink.instructions;
             _ingredients.addAll(widget.drink.ingredients);
-            id = widget.drink.id;
+            uuid = widget.drink.uuid;
         }
     }
 
@@ -206,14 +208,14 @@ class AddEditScreenState extends State<AddEditScreen> {
         }
         if (allValid){
             Drink newDrink = Drink(
-                this.id,
+                this.uuid ?? Uuid().v4(),
                 this.nameController.text,
                 this.primaryAlcoholController.text,
                 this.preferredGlassController.text,
                 this._ingredients,
                 this.instructionsController.text,
             );
-            widget.onSave(this.id, newDrink);
+            widget.onSave(this.uuid, newDrink);
             Navigator.pop(context);
         }
     }

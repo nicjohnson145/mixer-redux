@@ -8,6 +8,7 @@ import 'package:mixer/models/models.dart';
 import 'package:mixer/containers/edit_drink.dart';
 import 'package:mixer/actions/drink_actions.dart';
 import 'package:mixer/util/routes.dart';
+import 'package:mixer/presentation/home_screen.dart';
 
 
 class DrinkDetailsScreen extends StatelessWidget {
@@ -56,7 +57,7 @@ class DrinkDetailsScreen extends StatelessWidget {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (_) {
                             return EditDrink(
-                                id: this.drink.id
+                                uuid: this.drink.uuid
                             );
                         },
                     ));
@@ -133,12 +134,15 @@ class DrinkDetailsScreen extends StatelessWidget {
                     FlatButton(
                         child: Text('Yes'),
                         onPressed: () {
-                            print(this.drink.id);
                             StoreProvider.of<AppState>(context)
-                                .dispatch(DeleteDrinkAction(this.drink.id));
-                            Navigator.pushNamedAndRemoveUntil(
+                                .dispatch(DeleteDrinkAction(this.drink.uuid));
+                            Navigator.pushAndRemoveUntil(
                                 context,
-                                AppRoute.Home,
+                                MaterialPageRoute(
+                                    builder: (_) {
+                                        return HomeScreen(onInit: this.noop);
+                                    },
+                                ),
                                 (_) => false,
                             );
                         },
@@ -147,6 +151,10 @@ class DrinkDetailsScreen extends StatelessWidget {
                 elevation: 24.0,
             ),
         );
+    }
+
+    void noop() {
+
     }
 }
 

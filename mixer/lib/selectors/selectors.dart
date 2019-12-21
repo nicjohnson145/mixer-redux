@@ -4,6 +4,6 @@ List<Drink> drinksSelector(AppState state) {
     return state.drinks;
 }
 
-Drink drinkSelector(AppState state, int id) {
-    return drinksSelector(state).firstWhere((drink) => drink.id == id);
+Drink drinkSelector(AppState state, String uuid) {
+    return drinksSelector(state).firstWhere((drink) => drink.uuid == uuid);
 }

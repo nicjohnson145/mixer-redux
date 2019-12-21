@@ -8,18 +8,18 @@ class AddDrinkAction {
 
 
 class UpdateDrinkAction {
-    final int id;
+    final String uuid;
     final Drink updatedDrink;
 
     UpdateDrinkAction({
-        this.id,
+        this.uuid,
         this.updatedDrink,
     });
 }
 
 
 class DeleteDrinkAction {
-    final int id;
+    final String uuid;
 
-    DeleteDrinkAction(this.id);
+    DeleteDrinkAction(this.uuid);
 }
