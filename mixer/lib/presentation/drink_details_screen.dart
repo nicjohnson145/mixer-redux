@@ -1,7 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:redux/redux.dart';
+
 import 'package:mixer/models/models.dart';
 import 'package:mixer/containers/edit_drink.dart';
+import 'package:mixer/actions/drink_actions.dart';
+import 'package:mixer/util/routes.dart';
 
 
 class DrinkDetailsScreen extends StatelessWidget {
@@ -29,6 +35,14 @@ class DrinkDetailsScreen extends StatelessWidget {
         return Scaffold(
             appBar: AppBar(
                 title: Text("Details"),
+                actions: [
+                    IconButton(
+                        icon: Icon(Icons.delete_forever),
+                        onPressed: () {
+                            this.confirmDelete(context);
+                        }
+                    ),
+                ],
             ),
             body: Padding(
                 padding: EdgeInsets.symmetric(horizontal: this.edgeInsets),
@@ -102,6 +116,38 @@ class DrinkDetailsScreen extends StatelessWidget {
         );
     }
 
+    Future<void> confirmDelete(BuildContext context) async {
+        showDialog(
+            context: context,
+            barrierDismissible: false,
+            builder: (_) => AlertDialog(
+                title: Text("Confirm"),
+                content: Text("Are you sure you want to delete? This action cannot be undone"),
+                actions: <Widget>[
+                    FlatButton(
+                        child: Text('No'),
+                        onPressed: () {
+                            Navigator.of(context).pop();
+                        },
+                    ),
+                    FlatButton(
+                        child: Text('Yes'),
+                        onPressed: () {
+                            print(this.drink.id);
+                            StoreProvider.of<AppState>(context)
+                                .dispatch(DeleteDrinkAction(this.drink.id));
+                            Navigator.pushNamedAndRemoveUntil(
+                                context,
+                                AppRoute.Home,
+                                (_) => false,
+                            );
+                        },
+                    ),
+                ],
+                elevation: 24.0,
+            ),
+        );
+    }
 }
 
 
