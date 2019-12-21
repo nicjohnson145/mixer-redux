@@ -16,7 +16,9 @@ List<Drink> _addDrink(List<Drink> drinks, AddDrinkAction action) {
 }
 
 List<Drink> _updateDrink(List<Drink> drinks, UpdateDrinkAction action) {
-
+    return drinks
+        .map((drink) => drink.id == action.id ? action.updatedDrink : drink)
+        .toList();
 }
 
 List<Drink> _deleteDrink(List<Drink> drinks, DeleteDrinkAction action) {

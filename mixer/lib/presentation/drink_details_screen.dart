@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mixer/models/models.dart';
+import 'package:mixer/containers/edit_drink.dart';
+
 
 class DrinkDetailsScreen extends StatelessWidget {
     final Drink drink;
@@ -34,6 +36,18 @@ class DrinkDetailsScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: this.getBody(),
                 ),
+            ),
+            floatingActionButton: FloatingActionButton(
+                onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (_) {
+                            return EditDrink(
+                                id: this.drink.id
+                            );
+                        },
+                    ));
+                },
+                child: Icon(Icons.edit),
             ),
         );
     }

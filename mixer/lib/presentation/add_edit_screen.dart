@@ -213,7 +213,7 @@ class AddEditScreenState extends State<AddEditScreen> {
                 this._ingredients,
                 this.instructionsController.text,
             );
-            widget.onSave(null, newDrink);
+            widget.onSave(this.id, newDrink);
             Navigator.pop(context);
         }
     }
