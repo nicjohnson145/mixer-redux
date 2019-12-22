@@ -33,7 +33,7 @@ class _ViewModel {
 
     static _ViewModel fromStore(Store<AppState> store) {
         return _ViewModel(
-            drinks: drinksSelector(store.state),
+            drinks: sortedDrinks(store.state, sortOrderSelector(store.state)),
         );
     }
 }
