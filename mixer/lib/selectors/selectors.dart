@@ -1,5 +1,5 @@
 import 'package:mixer/models/models.dart';
-import 'package:mixer/util/enums.dart';
+import 'package:mixer/models/sort_order.dart';
 
 typedef DrinkComparisonFunc = int Function(Drink a, Drink b);
 
@@ -32,14 +32,8 @@ DrinkComparisonFunc _comparator(SortOrder order) {
             return __cmp_alcoholAlphabetical;
         }
         break;
-
-        case SortOrder.None: {
-            return __cmp_noop;
-        }
-        break;
     }
 }
 
-int __cmp_noop(Drink a, Drink b) => 0;
 int __cmp_nameAlphabetical(Drink a, Drink b) => a.name.compareTo(b.name);
 int __cmp_alcoholAlphabetical(Drink a, Drink b)  => a.primary_alcohol.compareTo(b.primary_alcohol);

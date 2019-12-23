@@ -1,5 +1,4 @@
-import 'drink.dart';
-import 'package:mixer/util/enums.dart';
+import 'package:mixer/models/models.dart';
 
 class AppState {
     final bool isLoading;
@@ -9,7 +8,7 @@ class AppState {
     AppState({
         this.isLoading = false,
         this.drinks = const [],
-        this.sortOrder = SortOrder.None,
+        this.sortOrder = SortOrder.Name_Alphabetical,
     });
 
     factory AppState.loading() => AppState(isLoading: true);

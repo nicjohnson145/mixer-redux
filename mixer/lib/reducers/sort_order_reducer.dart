@@ -1,5 +1,5 @@
 import 'package:redux/redux.dart';
-import 'package:mixer/util/enums.dart';
+import 'package:mixer/models/sort_order.dart';
 import 'package:mixer/actions/sort_order_actions.dart';
 
 final sortOrderReducer = combineReducers<SortOrder>([

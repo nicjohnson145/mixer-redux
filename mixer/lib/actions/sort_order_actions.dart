@@ -1,4 +1,4 @@
-import 'package:mixer/util/enums.dart';
+import 'package:mixer/models/sort_order.dart';
 
 class UpdateSortOrderAction {
     final SortOrder sortOrder;
