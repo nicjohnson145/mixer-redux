@@ -5,6 +5,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 
 import 'package:mixer/actions/loading_actions.dart';
 import 'package:mixer/containers/add_drink.dart';
+import 'package:mixer/containers/bulk_export.dart';
 import 'package:mixer/middleware/store_drinks_middleware.dart';
 import 'package:mixer/models/models.dart';
 import 'package:mixer/presentation/home_screen.dart';
@@ -37,6 +38,9 @@ class Mixer extends StatelessWidget {
                     },
                     AppRoute.AddDrink: (context) {
                         return AddDrink();
+                    },
+                    AppRoute.BulkExport: (context) {
+                        return BulkExport();
                     },
                 },
             ),

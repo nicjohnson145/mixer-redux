@@ -16,7 +16,7 @@ void main() {
             final storage = FileStorage('test_file', () => directory);
             List<Drink> drinks = [
                 Drink(
-                    1,
+                    'UUID-1',
                     'Test Drink',
                     'Rum', 
                     'Coupe',
@@ -24,7 +24,7 @@ void main() {
                     'Some fancy instructions',
                 ),
                 Drink(
-                    2,
+                    'UUID-2',
                     'Another Test Drink',
                     'Bourbon', 
                     'Rocks',

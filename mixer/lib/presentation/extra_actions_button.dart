@@ -11,15 +11,14 @@ class ExtraActionsButton extends StatelessWidget {
     Widget build(BuildContext context) {
         return PopupMenuButton<ExtraAction>(
             onSelected: (ExtraAction action) {
-                print("Bang");
                 String route;
-                //if (action == ExtraAction.BulkImport) {
-                //    route = AppRoute.BulkImport;
-                //}
-                //else {
-                //    route = AppRoute.BulkExport;
-                //}
-                //Navigator.of(context).pushNamed(route);
+                if (action == ExtraAction.BulkImport) {
+                    route = AppRoute.BulkImport;
+                }
+                else {
+                    route = AppRoute.BulkExport;
+                }
+                Navigator.of(context).pushNamed(route);
             },
             itemBuilder: (BuildContext context) {
                 return <PopupMenuItem<ExtraAction>>[
