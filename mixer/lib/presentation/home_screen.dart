@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 
 import 'package:mixer/containers/sorted_drinks.dart';
 import 'package:mixer/containers/sort_order_selector.dart';
+import 'package:mixer/presentation/extra_actions_button.dart';
 import 'package:mixer/util/routes.dart';
 
 // Temp imporrts until testing is done
@@ -37,6 +38,7 @@ class HomeScreenState extends State<HomeScreen> {
     List<Widget> getActions() {
         List<Widget> actions = [
             SortOrderSelector(),
+            ExtraActionsButton(),
         ];
         if (!kReleaseMode) {
             actions.addAll(<Widget>[
