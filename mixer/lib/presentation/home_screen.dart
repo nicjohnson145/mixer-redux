@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 
 import 'package:mixer/containers/sorted_drinks.dart';
+import 'package:mixer/containers/sort_order_selector.dart';
 import 'package:mixer/util/routes.dart';
 
 // Temp imporrts until testing is done
@@ -34,11 +35,11 @@ class HomeScreenState extends State<HomeScreen> {
     }
 
     List<Widget> getActions() {
-        if (kReleaseMode) {
-            return [];
-        }
-        else {
-            return [
+        List<Widget> actions = [
+            SortOrderSelector(),
+        ];
+        if (!kReleaseMode) {
+            actions.addAll(<Widget>[
                 IconButton(
                     icon: Icon(Icons.add_circle),
                     onPressed: () => this.prepData(context),
@@ -47,8 +48,9 @@ class HomeScreenState extends State<HomeScreen> {
                     icon: Icon(Icons.backspace),
                     onPressed: () => this.clearDrinks(context),
                 ),
-            ];
+            ]);
         }
+        return actions;
     }
 
     @override
