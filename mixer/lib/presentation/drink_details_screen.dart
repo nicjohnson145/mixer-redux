@@ -138,11 +138,7 @@ class DrinkDetailsScreen extends StatelessWidget {
                                 .dispatch(DeleteDrinkAction(this.drink.uuid));
                             Navigator.pushAndRemoveUntil(
                                 context,
-                                MaterialPageRoute(
-                                    builder: (_) {
-                                        return HomeScreen(onInit: this.noop);
-                                    },
-                                ),
+                                NoopHomeScreen.route(),
                                 (_) => false,
                             );
                         },
@@ -153,9 +149,6 @@ class DrinkDetailsScreen extends StatelessWidget {
         );
     }
 
-    void noop() {
-
-    }
 }
 
 

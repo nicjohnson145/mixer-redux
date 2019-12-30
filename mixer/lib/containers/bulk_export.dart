@@ -10,7 +10,8 @@ class BulkExport extends StatelessWidget {
 
     BulkExport({Key key}) : super(key: key);
 
-    @override build(BuildContext context) {
+    @override
+    Widget build(BuildContext context) {
         return StoreConnector<AppState, _ViewModel>(
             converter: _ViewModel.fromStore,
             builder: (BuildContext context, _ViewModel vm) {

@@ -14,7 +14,6 @@ class DrinkRepository {
     });
 
     Future<List<Drink>> loadDrinks() async {
-        print('Loading drinks');
         return await this.fileStorage.loadDrinks();
     }
 
