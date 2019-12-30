@@ -71,7 +71,7 @@ class Drink {
     }
 
     @override
-    int hashCode() {
+    int get hashCode {
         return this.uuid.hashCode;
     }
 }
