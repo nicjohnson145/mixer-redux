@@ -1,8 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
-import 'package:mixer/actions/drink_actions.dart';
+
 import 'package:mixer/models/models.dart';
 import 'package:mixer/presentation/drink_details_screen.dart';
 import 'package:mixer/selectors/selectors.dart';

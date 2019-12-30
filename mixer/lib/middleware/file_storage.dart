@@ -38,6 +38,6 @@ class FileStorage {
 
     Future<File> _getLocalFile() async {
         final dir = await this.getDirectory();
-        return File('${dir.path}/${tag}.json');
+        return File('${dir.path}/$tag.json');
     }
 }

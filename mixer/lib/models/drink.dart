@@ -50,14 +50,28 @@ class Drink {
         return 'Drink(uuid: $uuid, name: $name)';
     }
 
-    bool operator ==(Drink other) {
+    @override
+    bool operator ==(dynamic other) {
+        if (identical(this, other)) {
+            return true;
+        }
+        if (runtimeType != other.runtimeType) {
+            return false;
+        }
+
+        final Drink typedOther = other;
         return (
-            this.uuid == other.uuid
-            && this.name == other.name
-            && this.primary_alcohol == other.primary_alcohol
-            && this.preferred_glass == other.preferred_glass
-            && IterableEquality().equals(this.ingredients, other.ingredients)
-            && this.instructions == other.instructions
+            this.uuid == typedOther.uuid
+            && this.name == typedOther.name
+            && this.primary_alcohol == typedOther.primary_alcohol
+            && this.preferred_glass == typedOther.preferred_glass
+            && IterableEquality().equals(this.ingredients, typedOther.ingredients)
+            && this.instructions == typedOther.instructions
         );
+    }
+
+    @override
+    int hashCode() {
+        return this.uuid.hashCode;
     }
 }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:mixer/models/models.dart';
 import 'package:mixer/middleware/file_storage.dart';
-import 'package:mixer/presentation/home_screen.dart';
 import 'package:mixer/util/routes.dart';
 
 typedef ImportCallback = Function(Drink drink);
@@ -80,7 +79,7 @@ class _BulkImportScreenState extends State<BulkImportScreen> {
         String value = this.fieldController.text;
         try {
             return FileStorage.fromString(value);
-        } on FormatException catch(e) {
+        } on FormatException {
             Scaffold.of(context).showSnackBar(
                 SnackBar(
                     backgroundColor: Colors.redAccent,

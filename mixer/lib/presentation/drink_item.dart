@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mixer/models/models.dart';
-import 'package:mixer/selectors/selectors.dart';
 import 'package:mixer/containers/drink_details.dart';
 
 

@@ -32,6 +32,10 @@ DrinkComparisonFunc _comparator(SortOrder order) {
             return __cmp_alcoholAlphabetical;
         }
         break;
+
+        default: {
+            return __cmp_nameAlphabetical;
+        }
     }
 }
 

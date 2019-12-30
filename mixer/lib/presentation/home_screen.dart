@@ -8,7 +8,6 @@ import 'package:mixer/util/routes.dart';
 
 // Temp imporrts until testing is done
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:redux/redux.dart';
 import 'package:mixer/models/models.dart';
 import 'package:mixer/actions/drink_actions.dart';
 import 'package:mixer/actions/loading_actions.dart';
@@ -95,7 +94,7 @@ class HomeScreenState extends State<HomeScreen> {
         ];
         List<String> longIngs = [];
         for (int i = 0; i < 20; i++) {
-            longIngs.add('Ingredient ${i}');
+            longIngs.add('Ingredient $i');
         }
         drinks.add(
             Drink(
