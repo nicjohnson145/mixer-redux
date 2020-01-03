@@ -1,7 +1,8 @@
 import 'package:collection/collection.dart';
 
 class Drink {
-    String uuid; String name;
+    String uuid;
+    String name;
     String primary_alcohol;
     String preferred_glass;
     List<String> ingredients;
