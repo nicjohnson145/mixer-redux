@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+
 import 'package:mixer/models/extra_actions.dart';
+import 'package:mixer/models/app_state.dart';
 import 'package:mixer/util/routes.dart';
 import 'package:mixer/util/keys.dart';
+import 'package:mixer/actions/loading_actions.dart';
+
+import 'package:flutter_redux/flutter_redux.dart';
+
 
 class ExtraActionsButton extends StatelessWidget {
 
@@ -11,14 +17,22 @@ class ExtraActionsButton extends StatelessWidget {
     Widget build(BuildContext context) {
         return PopupMenuButton<ExtraAction>(
             onSelected: (ExtraAction action) {
-                String route;
-                if (action == ExtraAction.BulkImport) {
-                    route = AppRoute.BulkImport;
+                switch (action) {
+                    case ExtraAction.BulkImport: {
+                        Navigator.of(context).pushNamed(AppRoute.BulkImport);
+                    }
+                    break;
+
+                    case ExtraAction.BulkExport: {
+                        Navigator.of(context).pushNamed(AppRoute.BulkExport);
+                    }
+                    break;
+
+                    case ExtraAction.ClearDrinks: {
+                        StoreProvider.of<AppState>(context).dispatch(DrinksNotLoadedAction());
+                    }
+                    break;
                 }
-                else {
-                    route = AppRoute.BulkExport;
-                }
-                Navigator.of(context).pushNamed(route);
             },
             itemBuilder: (BuildContext context) {
                 return <PopupMenuItem<ExtraAction>>[
@@ -32,6 +46,11 @@ class ExtraActionsButton extends StatelessWidget {
                         value: ExtraAction.BulkExport,
                         child: Text('Bulk Export'),
                     ),
+                    PopupMenuItem<ExtraAction>(
+                        key: MixerKeys.ClearDrinks,
+                        value: ExtraAction.ClearDrinks,
+                        child: Text('Clear all drinks'),
+                    )
                 ];
             },
         );

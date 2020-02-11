@@ -10,7 +10,6 @@ import 'package:mixer/util/routes.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:mixer/models/models.dart';
 import 'package:mixer/actions/drink_actions.dart';
-import 'package:mixer/actions/loading_actions.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -44,10 +43,6 @@ class HomeScreenState extends State<HomeScreen> {
                 IconButton(
                     icon: Icon(Icons.add_circle),
                     onPressed: () => this.prepData(context),
-                ),
-                IconButton(
-                    icon: Icon(Icons.backspace),
-                    onPressed: () => this.clearDrinks(context),
                 ),
             ]);
         }
@@ -109,9 +104,5 @@ class HomeScreenState extends State<HomeScreen> {
         for (int i = 0; i < drinks.length; i++) {
             StoreProvider.of<AppState>(context).dispatch(AddDrinkAction(drinks[i]));
         }
-    }
-
-    void clearDrinks(BuildContext context) {
-        StoreProvider.of<AppState>(context).dispatch(DrinksNotLoadedAction());
     }
 }

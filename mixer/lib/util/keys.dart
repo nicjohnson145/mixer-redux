@@ -12,4 +12,5 @@ class MixerKeys {
 
     static final BulkImport = Key('__bulk_import__');
     static final BulkExport = Key('__bulk_export__');
+    static final ClearDrinks = Key('__clear_drinks__');
 }
