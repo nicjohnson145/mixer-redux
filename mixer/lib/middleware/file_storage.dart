@@ -26,7 +26,7 @@ class FileStorage {
 
     Future<File> saveDrinks(List<Drink> drinks) async {
         final file = await this._getLocalFile();
-        return file.writeAsString(FileStorage.dumpString(drinks));
+        return file.writeAsString(FileStorage.dumpString(drinks), flush: true);
     }
 
     static String dumpString(List<Drink> drinks) {
