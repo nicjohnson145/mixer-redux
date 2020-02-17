@@ -31,8 +31,8 @@ List<Middleware<AppState>> createStoreDrinksMiddleware([
 
 Middleware<AppState> _createSaveDrinks(DrinkRepository repository) {
     return (Store<AppState> store, action, NextDispatcher next) {
-        repository.saveDrinks(drinksSelector(store.state));
         next(action);
+        repository.saveDrinks(drinksSelector(store.state));
     };
 }
 
