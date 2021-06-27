@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:mixer/models/models.dart';
 import 'package:mixer/middleware/file_storage.dart';
@@ -26,6 +27,18 @@ class BulkExportScreen extends StatelessWidget {
                                 child: SelectableText(FileStorage.dumpString(this.drinks)),
                             ),
                         ),
+                        Container(
+                            width: double.maxFinite,
+                            child: ElevatedButton.icon(
+                            onPressed: () {
+                                Clipboard.setData(
+                                    ClipboardData(text: FileStorage.dumpString(this.drinks)));
+                            },
+                            label: Text('Copy to Clipboard',
+                                style: TextStyle(color: Colors.white)),
+                            icon: Icon(Icons.copy),
+                        ),
+                      ),
                     ],
                 ),
             ),
